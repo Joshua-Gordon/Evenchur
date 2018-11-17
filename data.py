@@ -9,8 +9,15 @@ locations = [{
     "east" : "start",
     "west" : "start",
     "south" : "server room",
+    "objects" : ["lambda"],
     "items" : ["lambda"]
-}]
+},
+{
+    "name" : "portal0",
+    "desc" : "You are in the nexus",
+    "look" : "The hallway is vast. The ceiling has receded past the darkness, and the floor nears so even while on it. Behind you, to the south, is the entrance. You can faintly make out a fork in front of you."
+}
+]
 
 def getLocation(name):
     for l in locations:

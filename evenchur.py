@@ -43,17 +43,28 @@ class Evenchur:
         elif inp[0] == "look":
             if len(inp) == 1:
                 print(self.location["look"])
-                for i in self.location["items"]:
+                for i in self.location["objects"]:
                     print("There is a " + str(i))
-            else:
+            elif len(inp) == 2:
                 i = getItemInLocation(inp[1].lower(),self.location)
                 if i:
                     print(i.getDesc())
                 else:
-                    print("There is no " + inp[0] + " here!")
+                    if inp[1] in self.location["objects"]:
+                        print("You can't take the " + inp[1])
+                    else:
+                        print("There is no " + inp[1] + " here!")
+            elif len(inp) == 3:
+                if inp[1] == "inv":
+                    itm = self.inv.item(inp[2].lower())
+                    if itm:
+                        print(itm.getDesc())
+                    else:
+                        print("You don't have a " + inp[2].lower())
         elif inp[0] == "take":
             i = getItemInLocation(inp[1].lower(),self.location)
             if i:
+                self.location["objects"].remove(i.getName())
                 self.location["items"].remove(i.getName())
                 self.inv.addItem(i)
                 print("You take the " + str(i))

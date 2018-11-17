@@ -19,6 +19,11 @@ class Inventory:
             else:
                 self.items.append(item)
 
+    def item(self,name):
+        for i in self.items:
+            if i.getName() == name:
+                return i
+
     def __str__(self):
         toreturn = "Inventory:\n"
         for i in self.items:
