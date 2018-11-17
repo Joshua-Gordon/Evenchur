@@ -15,11 +15,30 @@ locations = [{
 {
     "name" : "portal0",
     "desc" : "You are in the nexus",
-    "look" : "The hallway is vast. The ceiling has receded past the darkness, and the floor nears so even while on it. Behind you, to the south, is the entrance. You can faintly make out a fork in front of you."
+    "look" : "The hallway is vast. The ceiling has receded past the darkness, and the floor nears so even while on it. Behind you, to the south, is the entrance. You can faintly make out a fork in front of you.",
+    "north" : "nexusfork",
+    "east" : "portal0",
+    "west" : "portal0",
+    "south" : "start",
+    "objects" : ["wall crack"],
+    "items" : []
+},
+{
+    "name" : "server room",
+    "desc" : "You are back in the server room",
+    "look" : "The portal is screaming computation into existence to the north. COSI is to the east. Graham is sleeping on the floor.",
+    "north" : "start",
+    "east" : "locked",
+    "west" : "server room",
+    "south" : "server room",
+    "objects" : ["graham"],
+    "items" : ["graham"]
 }
 ]
 
 def getLocation(name):
+    if name == "locked":
+        return "locked"
     for l in locations:
         if l["name"] == name:
             return l
@@ -45,6 +64,11 @@ items = [
     "name" : "lambda",
     "desc" : "A lambda abstraction. Allows you to use objects in the world.",
     "weight" : 1
+},
+{
+    "name" : "graham",
+    "desc" : "Still asleep",
+    "weight" : 2
 }
 ]
 

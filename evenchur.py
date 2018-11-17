@@ -18,6 +18,7 @@ class Evenchur:
             print("Thank you for playing wing commander!")
             sys.exit(0)
         if(inp[0] == "go"):
+            prev = self.location
             if inp[1] == "n" or inp[1] == "north":
                 if self.location["name"] == self.location["north"]:
                     print("You cannot go that way.")
@@ -38,6 +39,9 @@ class Evenchur:
                     print("You cannot go that way.")
                 else:
                     self.location = getLocation(self.location["south"])
+            if self.location == "locked":
+                self.location = prev
+                print("The way is locked.")
         elif inp[0] == "items":
             print(self.inv)
         elif inp[0] == "look":
